@@ -15,3 +15,12 @@ class Config(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     master_password_hash: Mapped[str]
     device_salt: Mapped[str]
+
+class Entry(Base):
+    __tablename__ = 'entries'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    site_url: Mapped[str]
+    email: Mapped[Optional[str]]
+    username: Mapped[Optional[str]]
+    password: Mapped[str]

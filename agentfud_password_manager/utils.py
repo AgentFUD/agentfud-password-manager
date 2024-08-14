@@ -3,6 +3,14 @@ from Crypto.Cipher import AES
 import base64
 from Crypto.Util.Padding import pad, unpad
 import hashlib
+import string
+import random
+
+def check_master_password(master_password: str, master_password_hash: str) -> bool:
+    return master_password_hash == hashlib.sha256(master_password.encode()).hexdigest()
+
+def generate_password():
+    return ''.join(random.choices(string.ascii_letters + string.digits + string.punctuation, k=32))
 
 def get_master_key(master_password: str, device_salt: str):
     salt = device_salt.encode()
