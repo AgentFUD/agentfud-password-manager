@@ -16,7 +16,7 @@ with open(os.path.join(this_directory, 'requirements.txt')) as req:
 
 setup(
     name="agentfud-password-manager",
-    version="0.0.2",
+    version="0.0.4",
     author='AgentFUD',
     author_email='agentfud@gmail.com',
     description=DESCRIPTION,
