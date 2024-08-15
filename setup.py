@@ -1,21 +1,22 @@
 from setuptools import setup, find_packages
 import os, pathlib
+import pkg_resources
 
 DESCRIPTION = 'AgentFUD Password Manager'
 
 this_directory = pathlib.Path(__file__).parent.resolve()
+
 with open(os.path.join(this_directory, 'README.md')) as readme:
     LONG_DESCRIPTION = readme.read()
 
-def read_requirements():
-    with open("requirements.txt") as req:
-        content = req.read()
-        requirements = content.split("\n")
-    return requirements
+with open(os.path.join(this_directory, 'requirements.txt')) as req:
+    required = [
+        str(rq) for rq in pkg_resources.parse_requirements(req)
+    ]
 
 setup(
-    name="af-password-manager",
-    version="0.0.1",
+    name="agentfud-password-manager",
+    version="0.0.2",
     author='AgentFUD',
     author_email='agentfud@gmail.com',
     description=DESCRIPTION,
@@ -23,7 +24,7 @@ setup(
     long_description_content_type="text/markdown",
     packages=find_packages(),
     include_package_data=True,
-    install_requires=read_requirements(),
+    install_requires=required,
     url='https://github.com/AgentFUD/agentfud-password-manager',
     keywords=['python', 'python3', 'Password manager', 'command line'],
     entry_points="""
